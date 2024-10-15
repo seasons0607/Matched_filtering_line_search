@@ -80,7 +80,7 @@
       continuum_energy_low = "5.0" #keV
       continuum_energy_upp = "8.0" # keV
       ```
-3. スクリプトを実行します。
+3. スクリプトを実行します。ここからは基本的に待つだけです。
       ```
       python matched_filtering_line_search.py
       ```
@@ -88,13 +88,15 @@
       ```
       Calculating FWHM of 1100380108_block012.rmf:  17%|████████████▊                      | 75/450 [00:09<00:47,  7.87it/s]
       ```
-　　計算が完了すると、FWHMのエネルギー依存性が出力されます。
+   計算が完了すると、FWHMのエネルギー依存性が出力されます。
+
    ![1100380108_block012_FWHM.pdf](https://github.com/user-attachments/files/17374898/1100380108_block012_FWHM.pdf)
 
-  その後、`plot_spectrum_with_MC`関数が実行されます。まずは、fakeスペクトルの作成が開始し、この際も進行状況がステータスバーとして表示されます。`N=10000`の場合は、数時間ほどかかります。
+   その後、`plot_spectrum_with_MC`関数が実行されます。まずは、fakeスペクトルの作成が開始し、この際も進行状況がステータスバーとして表示されます。`N=10000`の場合は、数時間ほどかかります。
       ```
       Generating fake spectra:  12%|███████████▋                                       | 12/100 [00:40<04:59,  3.40s/it]
       ```
+   最後に、生成された全てのfakeスペクトルにMatched filterをかけます。この工程は、`N=10000`の場合は、数十分ほどかかります。
 　　
 
 
