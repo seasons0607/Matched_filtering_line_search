@@ -85,7 +85,8 @@
       python matched_filtering_line_search.py
       ```
    すると、まずは`calc_fwhm`関数が実行されます。この際、進行状況がステータスバーとして表示されます。NICERの場合は、１分ほどで終了します。
-      ``` 
+      ```
+      Calculating FWHM of 1100380108_block012.rmf:  17%|████████████▊                      | 75/450 [00:09<00:47,  7.87it/s]
       ```
 　　計算が完了すると、FWHMのエネルギー依存性が出力されます。
    ![1100380108_block012_FWHM.pdf](https://github.com/user-attachments/files/17374898/1100380108_block012_FWHM.pdf)
