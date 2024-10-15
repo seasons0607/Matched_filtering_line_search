@@ -6,6 +6,10 @@
 
 ## How to use 
 使用例として、NICERにより観測されたRS CVn型連星σ Gemの観測データの6.4 keV付近に見られた吸収構造に対して、本手法を用いて統計的有意性を検証します。
+
+![spec_S1_absorption_paper_main.pdf](https://github.com/user-attachments/files/17375949/spec_S1_absorption_paper_main.pdf)
+
+
 1. まず、必要なファイル一式を揃えます。
    1. 観測されたスペクトルをテキストファイル化します。本調査では6.4 keV付近の吸収線の有無を調べたいので、その周辺のバンド (5-8 keV) のデータのみを用います。
       ```
@@ -49,15 +53,15 @@
 > 本手法はContinuumのモデルフィットが十分な精度で可能であることが前提のため、エネルギーバンドは対象とするライン±数keVの狭帯域に絞った方が良い場合が多いです。
 2. main関数の中のパラメータを埋めていきます。まずは、rmfファイルや、1.で作成したテキストファイルのpathを記入します。
       ```  
-      nicer_rmf_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/observed_spectrum.rmf"
-      nicer_arf_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/observed_spectrum.arf"
-      nicer_spectrum_txt_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/observed_spectrum.txt"
-      nicer_continuum_txt_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/continuum.txt"
-      nicer_continuum_xcm_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/continuum.xcm"
+      nicer_rmf_path = "/Desktop/1100380108/observed_spectrum.rmf"
+      nicer_arf_path = "/Desktop/UX_Ari/1100380108/observed_spectrum.arf"
+      nicer_spectrum_txt_path = "/Desktop/1100380108/observed_spectrum.txt"
+      nicer_continuum_txt_path = "/Desktop/1100380108/continuum.txt"
+      nicer_continuum_xcm_path = "/Desktop/1100380108/continuum.xcm"
       ```
       Exposureは、観測されたスペクトルと同じ値に設定します。シミュレーションの試行回数は`N=10000`程度は最低でも必要です。
       ``` 
-      exposure = 3345 #sec
+      exposure = 1113 #sec
       trial_number = 10000
       ```
       最後に、1.(i)で観測データをテキストファイル化する際に指定したエネルギーバンドの下限値と上限値を入力します。
@@ -85,7 +89,7 @@
       ```
       Matched-filtering fake spectra: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:02<00:00, 42.72it/s
       ```
-   全ての計算が完了すると、観測されたスペクトルにMatched filterをかけたものとcontinuumの±1σ、±3σ を示す領域を示す図 (c.f. Figure 2 of [Miyazaki et al. 2016](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true): Figure 3 of Inoue et al. 2024) が出力され、対象とする構造が統計的に有意かどうか判定できます。この場合は、吸収構造の中心が3σ下限値を下回っているため、3σ以上の有意度での検出を主張できます。
+   全ての計算が完了すると、観測されたスペクトルにMatched filterをかけたものとcontinuumの±1σ、±3σ を示す領域を示す図 (c.f. Figure 2 of [Miyazaki et al. 2016](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true): Figure 3 of Inoue et al. 2024) が出力され、対象とする構造が統計的に有意かどうか判定できます (軸ラベルや表示範囲は手動で微調整しましょう)。この場合は、吸収構造の中心が3σ下限値を下回っているため、3σ以上の有意度での検出を主張できます。
 
 ## Functions
 - `gaussian`
