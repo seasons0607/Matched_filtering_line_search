@@ -37,4 +37,4 @@ Python 3 と 6.32 以降のHeasoftを前提としています。
 2024-10-04 new version 0.0 is created.
 
 ### Table of Content
-[How to use](#how-to-use).
+[How to use](#how-to-use)
