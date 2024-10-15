@@ -2,27 +2,12 @@
 - このスクリプトは、Matched filtering line search法 ([Miyazaki et al. 2016, PASJ, 68, 100](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true)) を用いて、輝線/吸収線の検出の有意性を検証するスクリプトです。
 - 本スクリプトを用いて論文を執筆する場合は、[Miyazaki et al. 2016, PASJ, 68, 100](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true)とInoue et al., 2024, MNRAS, ??, ?? を引用してください。
 - バグ等を見つけたら、お気軽にご連絡ください。
---  📧 inoue *at* cr.scphys.kyoto-u.ac.jp
+  -  📧 inoue *at* cr.scphys.kyoto-u.ac.jp
 
-## How to use
-1. 必要なファイル
-   1. 観測されたスペクトルデータをテキストファイル化したもの。
-   2. 観測されたスペクトルデータをフィットする際に用いるrmf、arfファイル。
-   3. 観測されたスペクトルデータのcontinuumのみをフィットし、テキストファイル化したもの。
-   4. 観測されたスペクトルデータのcontinuumのみをフィットした際の、xcmファイル。
-
-
-   を用意します。
-2. main 関数
-3. スクリプトを実行します。
-   
->[!WARNING]
->本スクリプトの`calc_fwhm`関数は、NICERのrmfファイルを前提としています。別の衛星のrmfファイルに用いる際には、その衛星のrmfファイルの構造用に書き換えが必要な場合があります。また、FWHMのエネルギー依存性も、NICER/すざくの場合には3次の多項式で近似できますが、別の衛星ではより高次の式が必要な可能性があります。
-
-## Example 
-使用例として、NICERにより観測されたRS CVn型連星UX Ariの観測データに、本手法を用います。
+## How to use 
+使用例として、NICERにより観測されたRS CVn型連星σ Gemの観測データの6.4 keV付近に見られた吸収構造、本手法を用います。
 1. まず必要なファイル一式を揃えます。
-   1. 観測されたスペクトルをテキストファイル化。本調査では鉄輝線の有無を調べたいので、その周辺のバンド (5-8 keV) のデータのみを用います。
+   1. 観測されたスペクトルをテキストファイル化します。本調査では鉄輝線の有無を調べたいので、その周辺のバンド (5-8 keV) のデータのみを用います。
       ```
       data observed_spectrum.pi
       response observed_spectrum.rmf
@@ -33,7 +18,7 @@
       wd observed_spectrum.txt
       ```
    
-   2. 観測されたスペクトルのContinuumのみをフィット。本例では、鉄輝線を除いた5.0-6.2、7.2-8.0 keVを`bremss`モデルでフィットしています。
+   2. 観測されたスペクトルのContinuumのみをフィットします。本例では、鉄輝線を除いた5.0-6.2、7.2-8.0 keVを`bremss`モデルでフィットしています。
       ```
       data observed_spectrum.pi
       response observed_spectrum.rmf
@@ -72,13 +57,13 @@
       ```
       Exposureは、観測されたスペクトルと同じ値に設定します。シミュレーションの試行回数は`N=10000`程度は最低でも必要です。
       ``` 
-      exposure = 3345
+      exposure = 3345 #sec
       trial_number = 10000
       ```
       最後に、1.(i)で観測データをテキストファイル化する際に指定したエネルギーバンドの下限値と上限値を入力します。
       ``` 
       continuum_energy_low = "5.0" #keV
-      continuum_energy_upp = "8.0" # keV
+      continuum_energy_upp = "8.0" #keV
       ```
 3. スクリプトを実行します。ここからは基本的に待つだけです。
       ```
@@ -100,10 +85,25 @@
       ```
       Matched-filtering fake spectra: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:02<00:00, 42.72it/s
       ```
-　　
+   全ての計算が完了すると、観測されたスペクトルにMatched filterをかけたものとcontinuumの±1σ、±3σ を示す領域を示す図 (c.f. Figure 2 of [Miyazaki et al. 2016](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true): Figure 3 of Inoue et al. 2024) が出力され、対象とする構造が統計的に有意かどうか判定できます。
 
+## Functions
+- `gaussian`
+  - ガウス関数を書き下した関数です。
+- `resolution_sigma`
+  - FWHMのエネルギー依存性をフィットする際に用いる関数です。NICER/すざくでは、3次の多項式を用いています。
+- `matched＿filter`
+  - [Miyazaki et al. 2016](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true) の式(1)に従い、Matched filterをかける関数です。
+- `extract_integers`
+  - ある範囲内の整数のみを取り出す関数です。図を出力する際の軸ラベルの設定に用います。
+- `calc_fwhm`
+  - rmfファイルから、FWHMの依存性を計算する関数です。`resolution_sigma`を用いて3次の多項式でフィットを行い、多項式の係数を出力します。
+- `plot_spectrum_with_MC`
+  - fakeスペクトルを作成し、Matched filterをかけた上で、その統計的分布を調べます。最終的に、観測されたスペクトルにMatched filterをかけたものとcontinuumの±1σ、±3σ を示す領域を示す図を出力します。
+   
+>[!WARNING]
+>本スクリプトの`calc_fwhm`関数は、NICERのrmfファイルを前提としています。別の衛星のrmfファイルに用いる際には、その衛星のrmfファイルの構造用に書き換えが必要な場合があります。また、FWHMのエネルギー依存性も、NICER/すざくの場合には3次の多項式で近似できますが、別の衛星ではより高次の式が必要な可能性があります。
 
-5.
 
 
 ## Enviroment
