@@ -54,7 +54,6 @@ def extract_integers_as_strings(start, end):
     return string_list
 
 def calc_fwhm(rmf_path):
-    #rmf_path = "/Volumes/crx_raid0/inoue_22/projects/nicer_systematic/RS_CVn/Sigma_Gem/1200040104/analysis/spec/block0/fake_spectra/1200040104_block0.rmf"
     rmf_name = os.path.splitext(os.path.basename(rmf_path))[0]
 
     fitsFile_rmf = fits.open(rmf_path)
