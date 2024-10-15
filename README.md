@@ -93,6 +93,9 @@
    
    ![Matched_filtered_spectrum.pdf](https://github.com/user-attachments/files/17377195/Matched_filtered_spectrum.pdf)
 
+> [!TIP]
+> 軸ラベルや表示範囲は手動で微調整しましょう。
+
 ## :white_check_mark: Functions
 - `gaussian`
   - ガウス関数を書き下した関数です。
