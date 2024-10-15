@@ -5,9 +5,9 @@
   -  📧 inoue *at* cr.scphys.kyoto-u.ac.jp
 
 ## How to use 
-使用例として、NICERにより観測されたRS CVn型連星σ Gemの観測データの6.4 keV付近に見られた吸収構造、本手法を用います。
-1. まず必要なファイル一式を揃えます。
-   1. 観測されたスペクトルをテキストファイル化します。本調査では鉄輝線の有無を調べたいので、その周辺のバンド (5-8 keV) のデータのみを用います。
+使用例として、NICERにより観測されたRS CVn型連星σ Gemの観測データの6.4 keV付近に見られた吸収構造に対して、本手法を用いて統計的有意性を検証します。
+1. まず、必要なファイル一式を揃えます。
+   1. 観測されたスペクトルをテキストファイル化します。本調査では6.4 keV付近の吸収線の有無を調べたいので、その周辺のバンド (5-8 keV) のデータのみを用います。
       ```
       data observed_spectrum.pi
       response observed_spectrum.rmf
@@ -46,7 +46,7 @@
       これで、下準備は完了です。この過程で生成したファイルは全て、観測データやrmfファイルと同じディレクトリに置いてください。
 
 > [!NOTE]
-> 本手法はContinuumのモデルフィットが十分な精度で可能であることが前提のため、エネルギーバンドは対象とする輝線の±数keVの狭帯域に絞った方が良い場合が多いです。
+> 本手法はContinuumのモデルフィットが十分な精度で可能であることが前提のため、エネルギーバンドは対象とするライン±数keVの狭帯域に絞った方が良い場合が多いです。
 2. main関数の中のパラメータを埋めていきます。まずは、rmfファイルや、1.で作成したテキストファイルのpathを記入します。
       ```  
       nicer_rmf_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/observed_spectrum.rmf"
@@ -85,7 +85,7 @@
       ```
       Matched-filtering fake spectra: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:02<00:00, 42.72it/s
       ```
-   全ての計算が完了すると、観測されたスペクトルにMatched filterをかけたものとcontinuumの±1σ、±3σ を示す領域を示す図 (c.f. Figure 2 of [Miyazaki et al. 2016](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true): Figure 3 of Inoue et al. 2024) が出力され、対象とする構造が統計的に有意かどうか判定できます。
+   全ての計算が完了すると、観測されたスペクトルにMatched filterをかけたものとcontinuumの±1σ、±3σ を示す領域を示す図 (c.f. Figure 2 of [Miyazaki et al. 2016](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true): Figure 3 of Inoue et al. 2024) が出力され、対象とする構造が統計的に有意かどうか判定できます。この場合は、吸収構造の中心が3σ下限値を下回っているため、3σ以上の有意度での検出を主張できます。
 
 ## Functions
 - `gaussian`
@@ -105,12 +105,9 @@
 >本スクリプトの`calc_fwhm`関数は、NICERのrmfファイルを前提としています。別の衛星のrmfファイルに用いる際には、その衛星のrmfファイルの構造用に書き換えが必要な場合があります。また、FWHMのエネルギー依存性も、NICER/すざくの場合には3次の多項式で近似できますが、別の衛星ではより高次の式が必要な可能性があります。
 
 
-
 ## Enviroment
 Python 3 と 6.32 以降のHeasoftを前提としています。
 
 ## History
-2024-10-04 new version 0.0 is created.
+2024-10-15 new version 0.0 is created.
 
-### Table of Content
-[How to use](#how-to-use)
