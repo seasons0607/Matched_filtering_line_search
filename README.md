@@ -84,8 +84,13 @@
       ```
       python matched_filtering_line_search.py
       ```
-   すると、まずは`calc_fwhm`関数が実行され、FWHMのエネルギー依存性が出力されます。
+   すると、まずは`calc_fwhm`関数が実行されます。この際、進行状況がステータスバーとして表示されます。NICERの場合は、１分ほどで終了します。
+      ``` 
+      ```
+　　計算が完了すると、FWHMのエネルギー依存性が出力されます。
    ![1100380108_block012_FWHM.pdf](https://github.com/user-attachments/files/17374898/1100380108_block012_FWHM.pdf)
+　　
+
 
 5.
 
