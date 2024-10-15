@@ -4,7 +4,7 @@
 - バグ等を見つけたら、お気軽にご連絡ください。
   -  📧 inoue *at* cr.scphys.kyoto-u.ac.jp
 
-## How to use 
+## :white_check_mark: How to use 
 使用例として、NICERにより観測されたRS CVn型連星σ Gemの観測データの6.4 keV付近に見られた吸収構造に対して、本手法を用いて統計的有意性を検証します。
 
 ![spec_S1_absorption_paper_main.pdf](https://github.com/user-attachments/files/17375949/spec_S1_absorption_paper_main.pdf)
@@ -93,7 +93,7 @@
    
    ![Matched_filtered_spectrum.pdf](https://github.com/user-attachments/files/17377195/Matched_filtered_spectrum.pdf)
 
-## Functions
+## :white_check_mark: Functions
 - `gaussian`
   - ガウス関数を書き下した関数です。
 - `resolution_sigma`
@@ -111,9 +111,9 @@
 >本スクリプトの`calc_fwhm`関数は、NICERのrmfファイルを前提としています。別の衛星のrmfファイルに用いる際には、その衛星のrmfファイルの構造用に書き換えが必要な場合があります。また、FWHMのエネルギー依存性も、NICER/すざくの場合には3次の多項式で近似できますが、別の衛星ではより高次の式が必要な可能性があります。
 
 
-## Enviroment
+## :white_check_mark: Enviroment
 Python 3 と 6.32 以降のHeasoftを前提としています。
 
-## History
+## :white_check_mark: History
 2024-10-15 new version 0.0 is created.
 
