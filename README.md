@@ -5,7 +5,7 @@
   -  📧 inoue *at* cr.scphys.kyoto-u.ac.jp
 
 ## :white_check_mark: How to use 
-使用例として、NICERにより観測されたRS CVn型連星σ Gemの観測データの6.4 keV付近に見られた吸収構造に対して、本手法を用いて統計的有意性を検証します。
+使用例として、NICERにより観測されたRS CVn型連星σ Gemの観測データの6.4 keV付近に見られた吸収構造 (Figure 2 of Inoue et al. 2024) に対して、本手法を用いて統計的有意性を検証します。
 
 ![spec_S1_absorption_paper_main.pdf](https://github.com/user-attachments/files/17375949/spec_S1_absorption_paper_main.pdf)
 
