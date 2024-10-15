@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Last modified 2023-07-06
+# Last modified 2024-10-15
 from astropy.io import fits
 from matplotlib import gridspec
 from astropy.stats import bayesian_blocks
