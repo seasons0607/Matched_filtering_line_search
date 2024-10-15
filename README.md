@@ -90,6 +90,8 @@
       Matched-filtering fake spectra: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:02<00:00, 42.72it/s
       ```
    全ての計算が完了すると、観測されたスペクトルにMatched filterをかけたものとcontinuumの±1σ、±3σ を示す領域を示す図 (c.f. Figure 2 of [Miyazaki et al. 2016](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true): Figure 3 of Inoue et al. 2024) が出力され、対象とする構造が統計的に有意かどうか判定できます (軸ラベルや表示範囲は手動で微調整しましょう)。この場合は、吸収構造の中心が3σ下限値を下回っているため、3σ以上の有意度での検出を主張できます。
+   
+   ![Matched_filtered_spectrum.pdf](https://github.com/user-attachments/files/17377195/Matched_filtered_spectrum.pdf)
 
 ## Functions
 - `gaussian`
