@@ -92,6 +92,9 @@
    ![1100380108_block012_FWHM.pdf](https://github.com/user-attachments/files/17374898/1100380108_block012_FWHM.pdf)
 
   その後、`plot_spectrum_with_MC`関数が実行されます。まずは、fakeスペクトルの作成が開始し、この際も進行状況がステータスバーとして表示されます。`N=10000`の場合は、数時間ほどかかります。
+      ```
+      Generating fake spectra:  12%|███████████▋                                       | 12/100 [00:40<04:59,  3.40s/it]
+      ```
 　　
 
 
