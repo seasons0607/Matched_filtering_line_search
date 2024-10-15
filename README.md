@@ -22,11 +22,69 @@
 ## Example 
 使用例として、NICERにより観測されたRS CVn型連星UX Ariの観測データに、本手法を用います。
 1. まず必要なファイル一式を揃えます。
-   1. 観測されたスペクトルをテキストファイル化
+   1. 観測されたスペクトルをテキストファイル化。本調査では鉄輝線の有無を調べたいので、その周辺のバンド (5-8 keV) のデータのみを用います。
+      ```
+      data observed_spectrum.pi
+      response observed_spectrum.rmf
+      arf observed_spectrum.arf
+      back observed_spectrum_3C50_bkg.pi
+      ignore **-5.0 8.0-**
       iplot
       wd observed_spectrum.txt
-3.
-4.
+      ```
+   
+   2. 観測されたスペクトルのContinuumのみをフィット。本例では、鉄輝線を除いた5.0-6.2、7.2-8.0 keVを`bremss`モデルでフィットしています。
+      ```
+      data observed_spectrum.pi
+      response observed_spectrum.rmf
+      arf observed_spectrum.arf
+      back observed_spectrum_3C50_bkg.pi
+      ignore **-5.0 8.0-**
+      ignore 6.2-7.2
+      model bremss
+      6.0
+      0.1
+      renorm
+      fit
+      ```
+      フィットを完了したら、xcmファイルとして本モデルを保存します。
+      ```
+      save all continuum.xcm
+      ```
+      その後、continuumのモデルをテキストファイル化します。この際、観測されたスペクトルとContinuumのモデルの間でエネルギーのビン数を揃えるために、フィットに用いなかった6.2-7.2 keVのモデルデータもテキストファイルには含めます。
+      ```
+      notice all
+      ignore **-5.0 8.0-**
+      iplot
+      wd continuum.txt
+      ```
+      これで、下準備は完了です。この過程で生成したファイルは全て、観測データやrmfファイルと同じディレクトリに置いてください。
+
+> [!NOTE]
+> 本手法はContinuumのモデルフィットが十分な精度で可能であることが前提のため、エネルギーバンドは対象とする輝線の±数keVの狭帯域に絞った方が良い場合が多いです。
+2. main関数の中のパラメータを埋めていきます。まずは、rmfファイルや、1.で作成したテキストファイルのpathを記入します。
+      ```  
+      nicer_rmf_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/observed_spectrum.rmf"
+      nicer_arf_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/observed_spectrum.arf"
+      nicer_spectrum_txt_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/observed_spectrum.txt"
+      nicer_continuum_txt_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/continuum.txt"
+      nicer_continuum_xcm_path = "/Desktop/UX_Ari/1100380108/analysis/spec/block012/continuum.xcm"
+      ```
+      Exposureは、観測されたスペクトルと同じ値に設定します。シミュレーションの試行回数は`N=10000`程度は最低でも必要です。
+      ``` 
+      exposure = 3345
+      trial_number = 10000
+      ```
+      最後に、1.(i)で観測データをテキストファイル化する際に指定したエネルギーバンドの下限値と上限値を入力します。
+      ``` 
+      continuum_energy_low = "5.0" #keV
+      continuum_energy_upp = "8.0" # keV
+      ```
+3. スクリプトを実行します。
+      ```
+      python matched_filtering_line_search.py
+      ```
+   すると、まずは`calc_fwhm`関数が実行され、FWHMのエネルギー依存性が図として出力されます。
 5.
 
 
