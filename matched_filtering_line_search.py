@@ -369,14 +369,14 @@ def plot_spectrum_with_MC(rmf_path, arf_path, spectrum_txt_path, continuum_txt_p
 
 def main():
     ## Path list ## 
-    nicer_rmf_path = "/Volumes/crx_raid0/inoue_22/projects/nicer_systematic/RS_CVn/Sigma_Gem/1200040104/analysis/spec/block0/fake_spectra/1200040104_block0.rmf"
-    nicer_arf_path = "/Volumes/crx_raid0/inoue_22/projects/nicer_systematic/RS_CVn/Sigma_Gem/1200040104/analysis/spec/block0/fake_spectra/1200040104_block0.arf"
-    nicer_spectrum_txt_path = "/Volumes/crx_raid0/inoue_22/projects/nicer_systematic/RS_CVn/Sigma_Gem/1200040104/analysis/spec/block0/apec+gauss.txt"
-    nicer_continuum_txt_path = "/Volumes/crx_raid0/inoue_22/projects/nicer_systematic/RS_CVn/Sigma_Gem/1200040104/analysis/spec/block0/bremss.txt"
-    nicer_continuum_xcm_path = "/Volumes/crx_raid0/inoue_22/projects/nicer_systematic/RS_CVn/Sigma_Gem/1200040104/analysis/spec/block0/bremss.xcm"
+    nicer_rmf_path = "/Desktop/SigmaGem/ObsID/observed_spectrum.rmf"
+    nicer_arf_path = "/Desktop/SigmaGem/ObsID/observed_spectrum.arf"
+    nicer_spectrum_txt_path = "/Desktop/SigmaGem/ObsID/observed_spectrum.txt"
+    nicer_continuum_txt_path = "/Desktop/SigmaGem/ObsID/continuum.txt"
+    nicer_continuum_xcm_path = "/Desktop/SigmaGem/ObsID/continuum.xcm"
 
     ## Exposure and Trial Number ## 
-    exposure = 1113
+    exposure = 1113 #sec
     trial_number = 10000
 
     ## Energy band of Continuum ##
