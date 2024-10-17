@@ -1,6 +1,6 @@
 # :bulb:Matched_filtering_line_search
 - このスクリプトは、Matched filtering line search法 ([Miyazaki et al. 2016, PASJ, 68, 100](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true)) を用いて、輝線/吸収線の検出の有意性を検証するスクリプトです。
-- 本スクリプトを用いて論文を執筆する場合は、[Miyazaki et al. 2016, PASJ, 68, 100](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true)とInoue et al., 2024, MNRAS, ??, ?? を引用してください。
+- 本スクリプトを用いて論文を執筆する場合は、[Rutledge & Sako, 2003, MNRAS, 339, 600](https://academic.oup.com/mnras/article/339/3/600/970878); [Hurkett et al., 2008, ApJ, 679, 587](https://iopscience.iop.org/article/10.1086/586881); [Miyazaki et al. 2016, PASJ, 68, 100](https://academic.oup.com/pasj/article/68/6/100/2664382?login=true); Inoue et al., 2024, MNRAS, ??, ?? を引用してください。
 - バグ等を見つけたら、お気軽にご連絡ください。
   -  📧 inoue *at* cr.scphys.kyoto-u.ac.jp
 
